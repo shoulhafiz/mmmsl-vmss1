@@ -12,12 +12,11 @@ systemctl restart waagent
 echo "
 LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
 <IfModule mpm_prefork_module>
-        ServerLimit             104
-        StartServers            30
-        MinSpareServers           20
-        MaxSpareServers          30
-        MaxRequestWorkers         100
-        MaxConnectionsPerChild   0
+        StartServers             5
+        MinSpareServers          5
+        MaxSpareServers          10
+        MaxClients               60
+        MaxConnectionsPerChild   30
 </IfModule>
 " > /etc/httpd/conf.modules.d/00-mpm.conf
 systemctl restart httpd
